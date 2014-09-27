@@ -1,13 +1,71 @@
-task main ()
-{
-  SetSensorType(IN_1,SENSOR_TYPE_LIGHT_ACTIVE); SetSensorMode(IN_1,SENSOR_MODE_PULSE);
-   int lineas;
+task main()
+ {
+ }
 
-   while(1)
-   { lineas = SENSOR_1;
-   NumOut(60,LCD_LINE5,lineas);
-      }
+task detener()
+ {
+ }
+ 
+task lcd()
+ {
+ }
+ 
+sub lcdlineas(int lineas)
+ {
+ while(1)
+   {
+    NumOut(60,LCD_LINE5,lineas);
+   }
+ }
+ 
+ sub avanzarlineas(int x)
+  {
+  
+  }
+ 
+task barras()
+ {
+ Follows(main);
+
+ SetSensorType(IN_1,SENSOR_TYPE_LIGHT_ACTIVE); SetSensorMode(IN_1,SENSOR_MODE_PULSE);
+ SetSensorType(IN_4,SENSOR_TYPE_TOUCH); SetSensorMode(IN_1,SENSOR_MODE_PULSE);
+ int lineas;
+ int a = 1;
+ int t;
+
+  while(a)
+ {
+  lineas = SENSOR_1;
+  lcdlineas(SENSOR_1);
+  t++;
+  
+  if(lineas==0)
+  {
+  OnFwd(OUT_BC,25);
+  until(t == 2700);
+  }
+
+  if(lineas==1)
+   {
+    TextOut(0,LCD_LINE3,"ROHO");
+    Wait(100000);
+   }
    
+  if(lineas==2)
+   {
+   OnFwd(OUT_BC,25);
+   until(lineas == 3 || t == 4000);
+                if(lineas == 3)
+                 {
+                 TextOut(0,LCD_LINE3,"VEHRDE");
+                 Wait(100000);
+                 }
+                else
+                 {
+                 TextOut(0,LCD_LINE3,"AZUHUL");
+                 Wait(100000);
+                 }
+   }
 
+  }
 }
-
