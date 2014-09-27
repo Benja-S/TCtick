@@ -1,0 +1,13 @@
+task main ()
+{
+  SetSensorType(IN_1,SENSOR_TYPE_LIGHT_ACTIVE); SetSensorMode(IN_1,SENSOR_MODE_PULSE);
+   int lineas;
+
+   while(1)
+   { lineas = SENSOR_1;
+   NumOut(60,LCD_LINE5,lineas);
+      }
+   
+
+}
+
